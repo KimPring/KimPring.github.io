@@ -1,6 +1,6 @@
 {
   "version": 4,
-  "generatedAt": "2026-06-23T10:48:27.267Z",
+  "generatedAt": "2026-06-23T11:07:49.730Z",
   "bundleMode": true,
   "hierarchyMode": "category/group/phase",
   "categoryOrder": [
@@ -30,11 +30,11 @@
       "phases": [],
       "files": [
         {
-          "name": "0614 MSS vs AT",
-          "fileName": "0614 MSS vs AT.txt",
-          "path": "data/scrim/0614 MSS vs AT.txt",
+          "name": "2026_06_14_MS_vs_AT",
+          "fileName": "2026_06_14_MS_vs_AT.txt",
+          "path": "data/scrim/2026_06_14_MS_vs_AT.txt",
           "size": 122733,
-          "updatedAt": "2026-06-23T10:48:23.138Z",
+          "updatedAt": "2026-06-23T11:07:45.459Z",
           "category": "scrim",
           "categoryName": "일반 스크림",
           "groupId": "scrim",
@@ -47,11 +47,28 @@
           "phaseKey": ""
         },
         {
-          "name": "0616 RB vs AT",
-          "fileName": "0616 RB vs AT.txt",
-          "path": "data/scrim/0616 RB vs AT.txt",
+          "name": "2026_06_16_KW_vs_SS",
+          "fileName": "2026_06_16_KW_vs_SS.txt",
+          "path": "data/scrim/2026_06_16_KW_vs_SS.txt",
+          "size": 99993,
+          "updatedAt": "2026-06-23T11:07:45.459Z",
+          "category": "scrim",
+          "categoryName": "일반 스크림",
+          "groupId": "scrim",
+          "groupName": "일반 스크림",
+          "seasonId": "",
+          "seasonName": "",
+          "phaseId": "",
+          "phaseName": "",
+          "phasePath": "",
+          "phaseKey": ""
+        },
+        {
+          "name": "2026_06_16_RB_vs_AT",
+          "fileName": "2026_06_16_RB_vs_AT.txt",
+          "path": "data/scrim/2026_06_16_RB_vs_AT.txt",
           "size": 104729,
-          "updatedAt": "2026-06-23T10:48:23.138Z",
+          "updatedAt": "2026-06-23T11:07:45.460Z",
           "category": "scrim",
           "categoryName": "일반 스크림",
           "groupId": "scrim",
@@ -64,11 +81,11 @@
           "phaseKey": ""
         },
         {
-          "name": "0618 KW vs AT",
-          "fileName": "0618 KW vs AT.txt",
-          "path": "data/scrim/0618 KW vs AT.txt",
+          "name": "2026_06_18_KW_vs_AT",
+          "fileName": "2026_06_18_KW_vs_AT.txt",
+          "path": "data/scrim/2026_06_18_KW_vs_AT.txt",
           "size": 109489,
-          "updatedAt": "2026-06-23T10:48:23.139Z",
+          "updatedAt": "2026-06-23T11:07:45.460Z",
           "category": "scrim",
           "categoryName": "일반 스크림",
           "groupId": "scrim",
@@ -81,11 +98,11 @@
           "phaseKey": ""
         },
         {
-          "name": "0619 IQ vs AT",
-          "fileName": "0619 IQ vs AT.txt",
-          "path": "data/scrim/0619 IQ vs AT.txt",
+          "name": "2026_06_19_IQ_vs_AT",
+          "fileName": "2026_06_19_IQ_vs_AT.txt",
+          "path": "data/scrim/2026_06_19_IQ_vs_AT.txt",
           "size": 102436,
-          "updatedAt": "2026-06-23T10:48:23.139Z",
+          "updatedAt": "2026-06-23T11:07:45.460Z",
           "category": "scrim",
           "categoryName": "일반 스크림",
           "groupId": "scrim",
@@ -98,11 +115,45 @@
           "phaseKey": ""
         },
         {
-          "name": "0622 RB vs AT",
-          "fileName": "0622 RB vs AT.txt",
-          "path": "data/scrim/0622 RB vs AT.txt",
+          "name": "2026_06_20_MS_vs_SS",
+          "fileName": "2026_06_20_MS_vs_SS.txt",
+          "path": "data/scrim/2026_06_20_MS_vs_SS.txt",
+          "size": 103889,
+          "updatedAt": "2026-06-23T11:07:45.461Z",
+          "category": "scrim",
+          "categoryName": "일반 스크림",
+          "groupId": "scrim",
+          "groupName": "일반 스크림",
+          "seasonId": "",
+          "seasonName": "",
+          "phaseId": "",
+          "phaseName": "",
+          "phasePath": "",
+          "phaseKey": ""
+        },
+        {
+          "name": "2026_06_20_SS_vs_KB",
+          "fileName": "2026_06_20_SS_vs_KB.txt",
+          "path": "data/scrim/2026_06_20_SS_vs_KB.txt",
+          "size": 101667,
+          "updatedAt": "2026-06-23T11:07:45.461Z",
+          "category": "scrim",
+          "categoryName": "일반 스크림",
+          "groupId": "scrim",
+          "groupName": "일반 스크림",
+          "seasonId": "",
+          "seasonName": "",
+          "phaseId": "",
+          "phaseName": "",
+          "phasePath": "",
+          "phaseKey": ""
+        },
+        {
+          "name": "2026_06_22_RB_vs_AT",
+          "fileName": "2026_06_22_RB_vs_AT.txt",
+          "path": "data/scrim/2026_06_22_RB_vs_AT.txt",
           "size": 124781,
-          "updatedAt": "2026-06-23T10:48:23.140Z",
+          "updatedAt": "2026-06-23T11:07:45.462Z",
           "category": "scrim",
           "categoryName": "일반 스크림",
           "groupId": "scrim",
@@ -117,9 +168,9 @@
       ],
       "bundle": {
         "path": "data/_bundles/scrim.bundle.json",
-        "size": 589314,
-        "fileCount": 5,
-        "updatedAt": "2026-06-23T10:48:27.265Z"
+        "size": 908418,
+        "fileCount": 8,
+        "updatedAt": "2026-06-23T11:07:49.730Z"
       }
     }
   ]
