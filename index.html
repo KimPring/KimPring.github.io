@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
 <!-- V10.1: 외부 이미지(WBD 프로필) hotlinking 방지 우회 - Referer 헤더 차단 -->
 <meta name="referrer" content="no-referrer">
-<title>WBD Baseball Analyzer V10.2</title>
+<title>WBD Baseball Analyzer V10.3</title>
 <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Barlow+Condensed:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
@@ -528,7 +528,7 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:14px;heigh
 <!-- ════ UPLOAD PAGE ════ -->
 <div id="upload-page">
   <div class="logo-big">WBD</div>
-  <div class="logo-sub">BASEBALL ANALYZER · V10.2</div>
+  <div class="logo-sub">BASEBALL ANALYZER · V10.3</div>
   <div id="server-library-box" style="width:100%;max-width:640px;margin-bottom:16px;background:var(--card);border:1px solid rgba(245,166,35,0.35);border-radius:12px;padding:20px 22px;display:none;box-shadow:0 0 32px rgba(245,166,35,0.05);text-align:left">
     <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:10px;flex-wrap:wrap">
       <div>
@@ -568,7 +568,7 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:14px;heigh
   <!-- 모바일 전용 상단 바 (햄버거) -->
   <div id="mobile-topbar" style="display:none">
     <button id="hamburger-btn" onclick="toggleMobileMenu()" aria-label="메뉴">☰</button>
-    <div class="mobile-logo">WBD <span style="font-size:10px;color:var(--muted);margin-left:2px">V10.2</span></div>
+    <div class="mobile-logo">WBD <span style="font-size:10px;color:var(--muted);margin-left:2px">V10.3</span></div>
     <button class="mobile-icon-btn" onclick="openGlobalSearch()" title="검색">🔍</button>
     <button class="mobile-icon-btn" onclick="document.getElementById('add-file-input').click()" title="경기 추가" style="color:var(--amber)">+</button>
   </div>
@@ -586,7 +586,7 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:14px;heigh
   <div id="mobile-menu-overlay" style="display:none" onclick="closeMobileMenu(event)">
     <div id="mobile-menu-panel" onclick="event.stopPropagation()">
       <div class="mobile-menu-header">
-        <div class="mobile-logo" style="font-size:16px;cursor:pointer" onclick="closeMobileMenu();openChangelogModal()" title="업데이트 내역 보기">WBD <span style="background:#ffd700;color:#000;font-size:11px;padding:1px 5px;border-radius:3px;font-weight:700;margin-left:2px">V10.1</span></div>
+        <div class="mobile-logo" style="font-size:16px;cursor:pointer" onclick="closeMobileMenu();openChangelogModal()" title="업데이트 내역 보기">WBD <span style="background:#ffd700;color:#000;font-size:11px;padding:1px 5px;border-radius:3px;font-weight:700;margin-left:2px">V10.3</span></div>
         <button class="mobile-icon-btn" onclick="closeMobileMenu()" style="font-size:20px">✕</button>
       </div>
       <div class="mobile-menu-section">
@@ -624,7 +624,7 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:14px;heigh
         <button class="mobile-menu-btn" onclick="closeMobileMenu();openPresetModal()">💾 프리셋</button>
         <button class="mobile-menu-btn" onclick="closeMobileMenu();openThemeModal()">🎨 테마</button>
         <button class="mobile-menu-btn" onclick="closeMobileMenu();openShortcutsModal()">⌨️ 단축키</button>
-        <button class="mobile-menu-btn" onclick="closeMobileMenu();openChangelogModal()" style="background:linear-gradient(90deg,rgba(204,68,255,.15),transparent);color:#cc44ff;font-weight:700">📋 업데이트 내역 (V10.2 NEW!)</button>
+        <button class="mobile-menu-btn" onclick="closeMobileMenu();openChangelogModal()" style="background:linear-gradient(90deg,rgba(204,68,255,.15),transparent);color:#cc44ff;font-weight:700">📋 업데이트 내역 (V10.3 NEW!)</button>
         <button class="mobile-menu-btn" onclick="closeMobileMenu();document.getElementById('add-file-input').click()" style="color:var(--amber)">+ 경기 추가</button>
         <button class="mobile-menu-btn" onclick="closeMobileMenu();openServerLibraryModal()" style="color:#88ccff">☁ 서버 경기 추가</button>
         <button class="mobile-menu-btn" onclick="closeMobileMenu();clearAllGames()" style="color:#ff4560">🗑️ 모든 경기 제거</button>
@@ -633,7 +633,7 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:14px;heigh
   </div>
 
   <div id="topnav">
-    <div class="nav-logo">WBD <span style="font-size:11px;color:var(--muted);letter-spacing:1px;margin-left:4px">V10.2</span></div>
+    <div class="nav-logo">WBD <span style="font-size:11px;color:var(--muted);letter-spacing:1px;margin-left:4px">V10.3</span></div>
     <button class="nav-btn active" onclick="showPage('home')">🏠 홈</button>
     <button class="nav-btn" onclick="showPage('pitcher')">⚾ 투수</button>
     <button class="nav-btn" onclick="showPage('batter')">🏏 타자</button>
@@ -8093,19 +8093,19 @@ function _quickBA(pitches){
 // - Fangraphs/Statcast이 실제 쓰는 방식
 
 const COUNT_RE = {
-  // 카운트 상태 (Bayesian: WBD 데이터 + MLB 표준 가중 결합, 표본 적은 카운트는 MLB로 끌어옴)
-  '0-0': 0.000,    '0-1': -0.016,   '0-2': -0.037,
-  '1-0': +0.019,   '1-1': -0.017,   '1-2': -0.067,
-  '2-0': +0.080,   '2-1': +0.014,   '2-2': -0.038,
-  '3-0': +0.246,   '3-1': +0.137,   '3-2': +0.061,
-  // 종료 상태 (1.7배 강화 + zero-centered: 평균 PA의 PV = 0)
-  // 40이닝(~600투구) 기준 좋은 투수 +22, 엘리트 +35 정도 분포 보이게
-  'K':   -0.560,   // 삼진 → 투수 입장 +0.56 (좋음)
-  'BB':  +0.443,   // 볼넷
-  '1B':  +0.698,   // 단타
-  'HR':  +2.279,   // 홈런
-  'HBP': +0.477,   // 사구
-  'OUT': -0.526    // 인플레이 아웃 → 투수 입장 +0.53 (좋음)
+  // V10.2: WBD 266경기 실측 run expectancy (0-0 기준 zero-center, 타자 관점).
+  //   기존 "MLB 표준 + 1.7배 강화" 제거 — 인플레이 격자(WBD 실측)와 동일 스케일로 통일.
+  '0-0': +0.000,    '0-1': -0.022,   '0-2': -0.270,
+  '1-0': +0.004,   '1-1': +0.013,   '1-2': -0.263,
+  '2-0': +0.013,   '2-1': -0.025,   '2-2': -0.245,
+  '3-0': +0.091,   '3-1': +0.034,   '3-2': -0.181,
+  // 종료 상태 (WBD 실측, 타자 관점 — 투수 PV는 _crvOfPitch에서 부호반전)
+  'K':   -0.508,
+  'BB':  +0.162,
+  '1B':  +0.332,
+  'HR':  +1.262,
+  'HBP': +0.182,
+  'OUT': -0.408
 };
 
 // 한 투구의 결과 코드 (다음 카운트 또는 종료 상태)
@@ -8190,25 +8190,25 @@ function _pvSum(pitches){
 // 가우시안 커널 스무딩으로 노이즈 제거 (sigma_ev=10, sigma_la=15)
 
 const XBA_GRID = {
-  55:  [+0.111,+0.118,+0.074,+0.035,-0.019,-0.098,-0.156,-0.169,-0.157,-0.137,-0.114,-0.089,-0.075],
-  60:  [+0.003,+0.006,+0.001,+0.003,-0.026,-0.091,-0.137,-0.142,-0.126,-0.103,-0.079,-0.059,-0.067],
-  65:  [-0.111,-0.100,-0.076,-0.050,-0.058,-0.095,-0.114,-0.107,-0.090,-0.071,-0.054,-0.044,-0.067],
-  70:  [-0.178,-0.160,-0.128,-0.095,-0.088,-0.097,-0.090,-0.072,-0.056,-0.047,-0.041,-0.043,-0.074],
-  75:  [-0.201,-0.181,-0.146,-0.113,-0.098,-0.091,-0.069,-0.046,-0.034,-0.033,-0.038,-0.051,-0.087],
-  80:  [-0.203,-0.178,-0.141,-0.105,-0.088,-0.076,-0.053,-0.031,-0.023,-0.030,-0.043,-0.063,-0.103],
-  85:  [-0.192,-0.162,-0.121,-0.083,-0.065,-0.056,-0.039,-0.024,-0.022,-0.034,-0.053,-0.079,-0.121],
-  90:  [-0.171,-0.137,-0.095,-0.056,-0.036,-0.030,-0.024,-0.021,-0.027,-0.043,-0.066,-0.096,-0.138],
-  95:  [-0.140,-0.105,-0.068,-0.030,-0.004,+0.002,-0.003,-0.014,-0.031,-0.052,-0.079,-0.113,-0.156],
-  100: [-0.101,-0.074,-0.045,-0.010,+0.027,+0.043,+0.032,+0.008,-0.018,-0.047,-0.083,-0.126,-0.171],
-  105: [-0.066,-0.049,-0.028,+0.007,+0.054,+0.087,+0.085,+0.062,+0.034,-0.002,-0.056,-0.122,-0.182],
-  110: [-0.039,-0.029,-0.012,+0.023,+0.077,+0.129,+0.152,+0.150,+0.136,+0.106,+0.039,-0.074,-0.181],
-  115: [-0.009,-0.003,+0.011,+0.042,+0.096,+0.162,+0.218,+0.250,+0.262,+0.252,+0.199,+0.043,-0.164],
-  120: [+0.031,+0.035,+0.044,+0.066,+0.112,+0.185,+0.267,+0.331,+0.367,+0.378,+0.351,+0.190,-0.138],
-  125: [+0.077,+0.079,+0.083,+0.093,+0.125,+0.198,+0.298,+0.383,+0.435,+0.457,+0.447,+0.296,-0.113],
-  130: [+0.120,+0.122,+0.121,+0.119,+0.135,+0.205,+0.316,+0.415,+0.475,+0.502,+0.496,+0.352,-0.090],
-  135: [+0.153,+0.156,+0.151,+0.140,+0.144,+0.210,+0.327,+0.434,+0.498,+0.524,+0.516,+0.372,-0.067],
-  140: [+0.171,+0.177,+0.171,+0.155,+0.151,+0.214,+0.335,+0.445,+0.509,+0.532,+0.514,+0.361,-0.043],
-  145: [+0.169,+0.184,+0.180,+0.162,+0.154,+0.214,+0.336,+0.447,+0.509,+0.522,+0.482,+0.306,-0.021]
+  55:  [-0.124,-0.050,-0.134,+0.028,-0.091,+0.029,+0.007,-0.122,-0.137,-0.092,-0.217,-0.270,-0.270],
+  60:  [-0.073,-0.052,-0.081,-0.085,-0.006,-0.094,+0.004,-0.173,-0.200,-0.270,-0.210,-0.270,-0.270],
+  65:  [-0.188,-0.224,-0.163,-0.113,-0.154,-0.068,-0.141,-0.134,-0.164,-0.270,-0.203,-0.262,-0.270],
+  70:  [-0.217,-0.141,-0.108,-0.059,-0.164,-0.152,-0.203,-0.085,+0.004,-0.192,-0.217,-0.270,-0.270],
+  75:  [-0.091,-0.068,-0.135,-0.075,-0.077,-0.066,-0.120,+0.147,-0.064,-0.122,-0.232,-0.229,-0.270],
+  80:  [-0.142,-0.082,-0.118,-0.051,-0.092,-0.041,+0.037,+0.167,+0.040,-0.097,-0.204,-0.201,-0.270],
+  85:  [-0.124,-0.131,-0.146,-0.049,-0.079,-0.051,+0.128,+0.044,+0.029,-0.034,-0.152,-0.270,-0.270],
+  90:  [-0.138,-0.040,-0.059,-0.042,+0.007,+0.009,+0.194,+0.012,-0.017,-0.046,-0.182,-0.199,-0.270],
+  95:  [-0.145,-0.023,-0.071,+0.030,+0.007,+0.094,+0.158,-0.066,-0.121,-0.141,-0.216,-0.270,-0.270],
+  100:  [-0.134,-0.103,-0.067,-0.056,-0.003,+0.041,+0.164,-0.066,-0.148,-0.190,-0.218,-0.206,-0.270],
+  105:  [-0.160,+0.035,-0.014,+0.012,+0.066,+0.038,+0.184,+0.028,-0.081,-0.164,-0.188,-0.262,-0.270],
+  110:  [-0.082,-0.006,+0.005,+0.054,+0.034,+0.079,+0.248,+0.152,+0.006,-0.106,-0.270,-0.267,-0.270],
+  115:  [+0.013,+0.031,+0.003,+0.094,+0.111,+0.123,+0.289,+0.342,+0.286,+0.203,-0.270,-0.269,-0.270],
+  120:  [-0.178,+0.082,+0.092,+0.103,+0.154,+0.167,+0.521,+0.611,+0.510,+0.511,-0.208,-0.257,-0.270],
+  125:  [+0.125,+0.118,+0.134,+0.113,+0.128,+0.199,+0.560,+0.889,+0.840,+0.672,+0.119,-0.252,-0.270],
+  130:  [+0.125,+0.128,+0.120,+0.112,+0.152,+0.187,+0.682,+0.966,+0.966,+0.775,+0.113,-0.248,-0.270],
+  135:  [+0.259,+0.121,+0.117,+0.124,+0.145,+0.353,+0.790,+0.799,+0.959,+0.849,+0.242,-0.251,-0.270],
+  140:  [-0.270,-0.023,-0.011,+0.047,+0.075,+0.166,+0.439,+0.619,+0.602,+1.400,-0.270,-0.270,-0.270],
+  145:  [-0.270,-0.085,-0.085,-0.052,-0.023,+0.091,+0.255,+0.313,+0.255,-0.270,-0.270,-0.270,-0.270]
 };
 // LA bins: -50, -40, -30, -20, -10, 0, 10, 20, 30, 40, 50, 60, 70
 
@@ -8255,9 +8255,8 @@ function _xCrvOfPitch(d){
   // 인플레이 타구: xRV 사용 (BABIP 운 제거)
   if((r === 4 || +d['1BSafe'] === 1 || r === 1 || r === 2) && +d.ev > 0){
     let xrv = _xrvOfBattedBall(+d.ev, +d.ldeg || 0);
-    // xRV는 raw linear weights → zero-center 보정 (평균 종료 RV 0.0594 빼기)
-    xrv -= 0.0594;
-    xrv *= 1.7;  // F: 1.7배 강화 (40이닝 기준 분포감 키움)
+    // V10.2: WBD 실데이터 격자(266경기, 평균0 중심·실측 run value)로 교체.
+    //   기존 MLB 격자 + 임의 zero-center(-0.0594) + 임의 1.7배율 모두 제거 — 데이터 자체가 WBD 환경.
     return -(xrv - curRE);
   }
   
@@ -11416,11 +11415,29 @@ function openThemeModal(){
 //   - title은 한 줄 핵심 요약, changes는 항목별 (icon + text)
 const CHANGELOG = [
   {
+    version: 'V10.3',
+    date: '2026-06',
+    title: '🎯 평가 모델 고도화 — xPV 실측 재산출 · 수비 방향 · 무브먼트 재설계',
+    badge: '#ffd700',
+    changes: [
+      {icon:'🎯', text:'⭐⭐⭐ <b>xPV 전면 재산출 (WBD 266경기 실측)</b> — 기대 구종가치를 MLB 격자+임의보정에서 WBD 실데이터로 교체. 인플레이 격자(EV×발사각) 재산출 + 카운트/삼진/볼넷 가치(COUNT_RE) 실측 통일 + 임의값(1.7배·zero-center·MLB결합) 전부 제거. 이제 "WBD 환경 투구당 실제 득점가치"로 일관'},
+      {icon:'🛡️', text:'⭐⭐ <b>수비 OAA v5 — 포구 방향(전진/후퇴/측면)</b> — 외야 플라이 난이도가 방향에 크게 좌우(전진 아웃률 59% vs 후퇴 23%). 시작점→포구점 벡터로 방향 판정 후 요구속도 커브를 방향별 분리 학습. 예측-실제 1%p 이내, zero-sum 유지'},
+      {icon:'🎯', text:'⭐⭐ <b>무브먼트 평가 재설계</b> — 구종별 절대평가(같은 구종끼리 백분위) → 주력+위력 가중 합산 + 결정구 보너스 + 원툴 방지. 구종분석 랭킹과 모수 통일(투수 평균무브 기준). 음수좌표 백분위 버그 수정'},
+      {icon:'📊', text:'⭐ <b>구종분석 기본정렬 = 구종의 질(xPV+/100)</b> — 투구수순 → 좋은 공 순으로'},
+      {icon:'🧬', text:'⭐⭐ <b>분석 내보내기 강화 (schema v9)</b> — league(리그 기준선)·glossary(지표 사전)·players[].splits(상황 분할: 좌우/구종/카운트/존9) 추가. AI 분석 최적화'},
+      {icon:'⚖️', text:'⭐⭐ <b>투수 pWAR FIP→실점(RA9) 기반 교체</b> — WBD는 BB 희귀해 FIP 변별력 낮음. 호투/망경기도 실점 기반으로'},
+      {icon:'🔍', text:'⭐⭐ <b>데이터 일관성 전수 점검</b> — 기록실↔분석 불일치 0 (이닝 정밀화·낫아웃 안타 오집계·타석경계 수정). 내보내기 어워드 WAR 기반 교정, 팀명 자동병합 강화, 타자 카드 클릭 크래시 수정'},
+    ]
+  },
+  {
     version: 'V10.2',
     date: '2026-06',
     title: '☁️ GitHub 서버 데이터 자동 로드 + 📂 카테고리/시즌 스코프 시스템',
     badge: '#88ccff',
     changes: [
+      {icon:'🛡️', text:'⭐⭐ <b>수비 OAA v5 — 포구 방향(전진/후퇴/측면) 추가</b> — 외야 플라이 잡기 난이도가 요구속도뿐 아니라 "앞으로 오는 타구냐 뒤로 가는 타구냐"에 크게 좌우됨(실측: 전진 아웃률 59% vs 후퇴 23%, 36%p 차). 수비수 시작점→포구점 벡터의 전후 성분으로 방향 판정 후, 외야 플라이 요구속도 커브를 방향별로 분리 학습. 검증(266경기): 방향별 예측 아웃률이 실제와 1%p 이내 일치, zero-sum 유지. 같은 요구속도라도 "앞으로 오는 어려운 타구를 잡으면 +OAA"로 정확히 평가'},
+      {icon:'🎯', text:'⭐⭐ <b>xPV 전면 재산출 — WBD 266경기 실측 기반</b> — 기대 구종가치(xPV) 계산을 MLB 격자 + 임의 보정에서 WBD 실데이터로 전면 교체. ① 인플레이 타구 격자(EV×발사각→득점가치)를 WBD 266경기(인플레이 2만개)로 재산출 — 타고 리그라 잘 맞은 타구(배럴)가 MLB 대비 2배 이상 위험하게 반영 ② 카운트·삼진·볼넷 가치(COUNT_RE)도 WBD 실측 run expectancy로 통일 ③ 기존 임의값(1.7배 강화·-0.0594 zero-center·"MLB 표준 결합") 전부 제거. 이제 xPV가 "WBD 환경에서 투구당 실제 득점가치"라는 일관된 의미. 효과: 삼진 과대평가 해소(아리알 등 인플레이 억제형 투수 재평가), 구종분석 기본정렬도 이 xPV 기반'},
+      {icon:'📊', text:'⭐ <b>구종분석 기본 정렬 = 구종의 질(xPV+/100)</b> — 기존엔 투구수(usage)순이라 "많이 던진 구종"이 위로 왔는데, 이제 "좋은 구종"순으로. xPV+/100은 타구질 기반 기대 구종가치를 리그평균=100 대비로 본 값이라 운(BABIP)을 배제한 순수한 구종의 질을 반영. 헤더 클릭으로 다른 기준 정렬은 그대로'},
       {icon:'☁️', text:'⭐⭐⭐ <b>(NEW) GitHub 서버 CSV 자동 로드</b> — GitHub 저장소 <code>data/league/시즌명/</code> 등 폴더에 CSV를 넣으면 GitHub Actions가 manifest를 자동 생성하고, 사이트 접속 시 <b>전체 경기를 자동으로 불러옵니다</b>. 더 이상 매번 파일 업로드 불필요. 병렬 다운로드(동시 8) + 번들 묶음 파일로 로딩 속도 최적화'},
       {icon:'📂', text:'⭐⭐⭐ <b>(NEW) 카테고리/그룹 스코프 시스템</b> — 리그전/일반 스크림/독립팀/이벤트리그/기타 카테고리와 시즌 그룹별로 데이터를 관리. 대시보드에서 카테고리·그룹·기간(최근 N일) 필터로 원하는 범위만 활성화해서 분석 가능'},
       {icon:'📊', text:'⭐⭐ <b>경기 목록 메타 표시</b> — 각 경기에 출처(서버/로컬)·카테고리·그룹 배지 표시. 서버 경기와 직접 올린 경기를 한눈에 구분'},
@@ -12933,7 +12950,7 @@ function showPitcherPitchGroupAnalysis(pitcherName, group){
 
 window._pitchTypeState={
   selectedGroup:null,
-  sortKey:'usage',
+  sortKey:'xpvPlus100',  // V10.2: 기본 정렬을 투구수 → 구종의 순수한 질(xPV+/100, 운 배제·리그평균 대비)
   sortDir:'desc',
   minPitches:20
 };
@@ -17221,6 +17238,13 @@ function _computeDefenseData(){
     d._ev = +d.ev || 0; d._ldeg = +d.ldeg || 0;
     d._T = (+d.hSec>0 && +d.cSec>0 && tT>0.05 && tT<20) ? tT : null;
     d._hitDistFromHP = _distM(0, -20, lx, lz);
+    // V10.2: 포구 방향(전후) — 수비수가 홈에서 멀어지며 잡으면(뒤로) +, 가까워지며 잡으면(앞으로) -.
+    //   같은 거리·시간이라도 앞으로 오는 짧은 타구가 잡기 어려움(아웃률 42% vs 후방 79%, 37%p차).
+    if(startX!=null && startY!=null){
+      const dStart = Math.hypot(startX-0, startY-(-20));   // 시작점의 홈 거리
+      const dCatch = Math.hypot(cx-0, cz-(-20));           // 포구점의 홈 거리
+      d._catchDir = dCatch - dStart;  // +뒤(후퇴) / -앞(전진)
+    } else d._catchDir = null;
     d._playerH = gameH != null ? gameH : (playerHeight[d.cPlr] || null);
     d._noiseyDist = isNoiseyDist;
     if(finalPos != null) enriched.push(d);  // 포지션 못 찾거나 노이즈는 제외
@@ -17285,7 +17309,18 @@ function _computeDefenseData(){
   const _ofLine = enriched.filter(p => p._pos && !INFIELD_POS[p._pos] && p._ldeg<10);
   const _ifAll = enriched.filter(p => p._pos && INFIELD_POS[p._pos]);
   
-  const curveOfFly = _buildCurve(_ofFly, p => Math.min(8, p._moveDist/p._T), 0.5, 8);  // 요구속도 m/s
+  // V10.2: 외야 플라이를 방향(전진/후퇴/측면)으로 분리해 각각 요구속도 커브 — 방향이 37%p 영향.
+  const _dirOf = p => (p._catchDir==null ? 'side' : (p._catchDir > 3 ? 'back' : (p._catchDir < -3 ? 'front' : 'side')));
+  const _ofFlyFront = _ofFly.filter(p=>_dirOf(p)==='front');
+  const _ofFlyBack  = _ofFly.filter(p=>_dirOf(p)==='back');
+  const _ofFlySide  = _ofFly.filter(p=>_dirOf(p)==='side');
+  const _vGet = p => Math.min(8, p._moveDist/p._T);
+  // 방향 그룹 표본이 충분하면 분리 커브, 적으면 전체 커브로 폴백
+  const curveFlyAll = _buildCurve(_ofFly, _vGet, 0.5, 8);
+  const curveFlyFront = _ofFlyFront.length>=30 ? _buildCurve(_ofFlyFront, _vGet, 0.5, 8) : curveFlyAll;
+  const curveFlyBack  = _ofFlyBack.length>=30  ? _buildCurve(_ofFlyBack, _vGet, 0.5, 8)  : curveFlyAll;
+  const curveFlySide  = _ofFlySide.length>=30  ? _buildCurve(_ofFlySide, _vGet, 0.5, 8)  : curveFlyAll;
+  const curveOfFly = (v, dir) => dir==='front'?curveFlyFront(v) : dir==='back'?curveFlyBack(v) : curveFlySide(v);
   const curveOfLine = _buildCurve(_ofLine, p => p._moveDist, 5, 40);                    // 라이너: 거리 약커브
   const curveInf = _buildCurve(_ifAll, p => p._moveDist, 3, 21);                        // 내야: 거리 커브
   
@@ -17293,7 +17328,7 @@ function _computeDefenseData(){
     if(!p._pos){ p._xOut = GLOBAL_OUT_RATE; p._difficulty = 0.5; return; }
     let xOut;
     if(INFIELD_POS[p._pos]) xOut = curveInf(p._moveDist);
-    else if(p._ldeg>=10 && p._T!=null && p._moveDist!=null) xOut = curveOfFly(Math.min(8, p._moveDist/p._T));
+    else if(p._ldeg>=10 && p._T!=null && p._moveDist!=null) xOut = curveOfFly(Math.min(8, p._moveDist/p._T), _dirOf(p));
     else xOut = curveOfLine(p._moveDist);
     p._xOut = Math.max(0.02, Math.min(0.98, xOut));
   });
@@ -24675,7 +24710,7 @@ function exportAnalyticsBundle(opts){
   // 1) 메타 정보
   const meta={
     generatedAt:new Date().toISOString(),
-    appVersion:'V10.2',
+    appVersion:'V10.3',
     schemaVersion:9,
     schemaChanges:{
       v9_changes:[
@@ -25351,7 +25386,7 @@ function exportFullBackup(){
   // 풀 분석 데이터
   const data={
     generatedAt:new Date().toISOString(),
-    appVersion:'V10.2',
+    appVersion:'V10.3',
     schemaVersion:2,
     
     // 메타 정보
