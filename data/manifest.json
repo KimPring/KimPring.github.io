@@ -1,6 +1,6 @@
 {
   "version": 4,
-  "generatedAt": "2026-06-26T14:39:15.436Z",
+  "generatedAt": "2026-06-26T17:05:49.004Z",
   "bundleMode": true,
   "hierarchyMode": "category/group/phase",
   "categoryOrder": [
@@ -34,16 +34,16 @@
           "path": "",
           "key": "__regular__",
           "fileCount": 2,
-          "size": 186092
+          "size": 186151
         }
       ],
       "files": [
         {
-          "name": "Summer 1R AT vs IQ",
-          "fileName": "Summer 1R AT vs IQ.txt",
-          "path": "data/league/26_Summer/Summer 1R AT vs IQ.txt",
-          "size": 100143,
-          "updatedAt": "2026-06-26T14:39:11.376Z",
+          "name": "2026_06_26_AT_vs_IQ",
+          "fileName": "2026_06_26_AT_vs_IQ.txt",
+          "path": "data/league/26_Summer/2026_06_26_AT_vs_IQ.txt",
+          "size": 100202,
+          "updatedAt": "2026-06-26T17:05:44.828Z",
           "category": "league",
           "categoryName": "리그전",
           "groupId": "league/26_Summer",
@@ -56,11 +56,11 @@
           "phaseKey": "__regular__"
         },
         {
-          "name": "Summer 1R KW vs SS",
-          "fileName": "Summer 1R KW vs SS.txt",
-          "path": "data/league/26_Summer/Summer 1R KW vs SS.txt",
+          "name": "2026_06_26_KW_vs_SS",
+          "fileName": "2026_06_26_KW_vs_SS.txt",
+          "path": "data/league/26_Summer/2026_06_26_KW_vs_SS.txt",
           "size": 85949,
-          "updatedAt": "2026-06-26T14:39:11.376Z",
+          "updatedAt": "2026-06-26T17:05:44.828Z",
           "category": "league",
           "categoryName": "리그전",
           "groupId": "league/26_Summer",
@@ -75,9 +75,9 @@
       ],
       "bundle": {
         "path": "data/_bundles/league_26_Summer.bundle.json",
-        "size": 194845,
+        "size": 194910,
         "fileCount": 2,
-        "updatedAt": "2026-06-26T14:39:15.423Z"
+        "updatedAt": "2026-06-26T17:05:48.992Z"
       }
     },
     {
@@ -96,7 +96,7 @@
           "fileName": "2026_06_14_MS_vs_AT.txt",
           "path": "data/scrim/2026_06_14_MS_vs_AT.txt",
           "size": 122733,
-          "updatedAt": "2026-06-26T14:39:11.377Z",
+          "updatedAt": "2026-06-26T17:05:44.849Z",
           "category": "scrim",
           "categoryName": "일반 스크림",
           "groupId": "scrim",
@@ -113,7 +113,7 @@
           "fileName": "2026_06_16_AT_vs_RB.txt",
           "path": "data/scrim/2026_06_16_AT_vs_RB.txt",
           "size": 104729,
-          "updatedAt": "2026-06-26T14:39:11.378Z",
+          "updatedAt": "2026-06-26T17:05:44.850Z",
           "category": "scrim",
           "categoryName": "일반 스크림",
           "groupId": "scrim",
@@ -130,7 +130,7 @@
           "fileName": "2026_06_16_KW_vs_SS.txt",
           "path": "data/scrim/2026_06_16_KW_vs_SS.txt",
           "size": 99993,
-          "updatedAt": "2026-06-26T14:39:11.378Z",
+          "updatedAt": "2026-06-26T17:05:44.850Z",
           "category": "scrim",
           "categoryName": "일반 스크림",
           "groupId": "scrim",
@@ -147,7 +147,7 @@
           "fileName": "2026_06_18_AT_vs_KW.txt",
           "path": "data/scrim/2026_06_18_AT_vs_KW.txt",
           "size": 109489,
-          "updatedAt": "2026-06-26T14:39:11.379Z",
+          "updatedAt": "2026-06-26T17:05:44.851Z",
           "category": "scrim",
           "categoryName": "일반 스크림",
           "groupId": "scrim",
@@ -164,7 +164,7 @@
           "fileName": "2026_06_19_AT_vs_IQ.txt",
           "path": "data/scrim/2026_06_19_AT_vs_IQ.txt",
           "size": 102436,
-          "updatedAt": "2026-06-26T14:39:11.379Z",
+          "updatedAt": "2026-06-26T17:05:44.851Z",
           "category": "scrim",
           "categoryName": "일반 스크림",
           "groupId": "scrim",
@@ -181,7 +181,7 @@
           "fileName": "2026_06_20_MS_vs_SS.txt",
           "path": "data/scrim/2026_06_20_MS_vs_SS.txt",
           "size": 103889,
-          "updatedAt": "2026-06-26T14:39:11.380Z",
+          "updatedAt": "2026-06-26T17:05:44.852Z",
           "category": "scrim",
           "categoryName": "일반 스크림",
           "groupId": "scrim",
@@ -198,7 +198,7 @@
           "fileName": "2026_06_20_SS_vs_KB.txt",
           "path": "data/scrim/2026_06_20_SS_vs_KB.txt",
           "size": 101667,
-          "updatedAt": "2026-06-26T14:39:11.380Z",
+          "updatedAt": "2026-06-26T17:05:44.852Z",
           "category": "scrim",
           "categoryName": "일반 스크림",
           "groupId": "scrim",
@@ -215,7 +215,7 @@
           "fileName": "2026_06_22_AT_vs_RB.txt",
           "path": "data/scrim/2026_06_22_AT_vs_RB.txt",
           "size": 124781,
-          "updatedAt": "2026-06-26T14:39:11.381Z",
+          "updatedAt": "2026-06-26T17:05:44.853Z",
           "category": "scrim",
           "categoryName": "일반 스크림",
           "groupId": "scrim",
@@ -232,7 +232,7 @@
           "fileName": "2026_06_23_KW_vs_AT.txt",
           "path": "data/scrim/2026_06_23_KW_vs_AT.txt",
           "size": 113077,
-          "updatedAt": "2026-06-26T14:39:11.381Z",
+          "updatedAt": "2026-06-26T17:05:44.853Z",
           "category": "scrim",
           "categoryName": "일반 스크림",
           "groupId": "scrim",
@@ -249,7 +249,7 @@
           "fileName": "2026_06_24_SS_vs_MS.txt",
           "path": "data/scrim/2026_06_24_SS_vs_MS.txt",
           "size": 84390,
-          "updatedAt": "2026-06-26T14:39:11.382Z",
+          "updatedAt": "2026-06-26T17:05:44.854Z",
           "category": "scrim",
           "categoryName": "일반 스크림",
           "groupId": "scrim",
@@ -266,7 +266,7 @@
         "path": "data/_bundles/scrim.bundle.json",
         "size": 1114664,
         "fileCount": 10,
-        "updatedAt": "2026-06-26T14:39:15.435Z"
+        "updatedAt": "2026-06-26T17:05:49.003Z"
       }
     }
   ]
