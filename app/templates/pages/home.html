@@ -1,0 +1,37 @@
+<div class="page active" id="page-home">
+    <div id="favorites-section"></div>
+    <div class="card section" id="games-overview" style="margin-bottom:16px"></div>
+    <div class="card section" id="game-dashboard" style="margin-bottom:16px">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;flex-wrap:wrap;gap:10px">
+        <div class="card-title" style="margin:0">📋 경기 대시보드</div>
+        <div style="font-size:11px;color:var(--muted);font-family:var(--mono)" id="dashboard-summary"></div>
+      </div>
+      <div class="filter-row" style="margin-bottom:10px;flex-wrap:wrap">
+        <span class="filter-label">분류</span>
+        <select id="dash-category-filter" onchange="onDashCategoryFilterChange()"><option value="">전체</option></select>
+        <span class="filter-label">그룹</span>
+        <select id="dash-group-filter" onchange="renderGameDashboard()"><option value="">전체</option></select>
+        <span class="filter-label">팀 필터</span>
+        <select id="dash-team-filter" onchange="renderGameDashboard()"><option value="">전체</option></select>
+        <span class="filter-label">정렬</span>
+        <select id="dash-sort" onchange="renderGameDashboard()">
+          <option value="date-desc">최신순</option>
+          <option value="date-asc">오래된순</option>
+        </select>
+        <span class="filter-label" id="dash-round-label" style="display:none">라운드</span>
+        <span id="round-filter-bar" style="display:none;align-items:center;gap:5px"></span>
+        <input type="text" id="dash-search" placeholder="팀명 검색..." oninput="renderGameDashboard()" style="background:#060e1a;border:1px solid var(--border);color:var(--text);padding:6px 10px;border-radius:3px;font-size:12px;font-family:var(--cond);min-width:140px">
+        <button class="btn-secondary" onclick="dashActivateAll(true)" style="font-size:11px;padding:6px 12px">✓ 전체 선택</button>
+        <button class="btn-secondary" onclick="dashActivateAll(false)" style="font-size:11px;padding:6px 12px">✗ 전체 해제</button>
+        <button class="btn-secondary" onclick="clearAllGames()" style="font-size:11px;padding:6px 12px;color:#ff4560;border-color:#ff4560">🗑️ 전체 제거</button>
+      </div>
+      <div id="dashboard-grid" style="max-height:340px;overflow-y:auto;padding-right:4px;display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:10px"></div>
+    </div>
+    <div class="section" id="scoreboard-wrap"></div>
+    <div class="grid4 section" id="stat-cards-wrap"></div>
+    <div class="grid2 section">
+      <div class="card" style="border-right:3px solid #ff8c4444"><div class="card-title" style="display:flex;align-items:center;gap:8px"><span style="font-size:18px">⚾</span>투수 로스터</div><div id="pitcher-roster"></div></div>
+      <div class="card" style="border-left:3px solid #39ff8a44"><div class="card-title" style="display:flex;align-items:center;gap:8px"><span style="font-size:18px">🏏</span>타자 로스터</div><div id="batter-roster"></div></div>
+    </div>
+    <div class="card section"><div class="card-title">경기 흐름 타임라인</div><div id="home-timeline"></div></div>
+  </div>

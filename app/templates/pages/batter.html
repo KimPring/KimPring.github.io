@@ -1,0 +1,248 @@
+<div class="page active" id="page-batter">
+    <div class="filter-row">
+      <span class="filter-label">경기</span>
+      <select id="batter-game-sel" onchange="onBatterGameFilter()"><option value="">전체 경기</option></select>
+      <span class="filter-label">타자</span>
+      <select id="batter-sel" onchange="onBatterChange()"></select>
+      <span class="filter-label" style="margin-left:8px">키</span>
+      <select id="batter-height-filter" onchange="onBatterHeightFilter()" style="background:var(--card2);border:1px solid var(--border);color:var(--text);padding:4px 8px;border-radius:4px;font-size:11px">
+        <option value="">전체 키</option>
+      </select>
+    </div>
+    <div id="batter-header"></div>
+    <div id="batter-fielding"></div>
+    <div class="subtab-bar">
+      <button class="stab active" onclick="switchStab('batter',0)">A. 타구 분석</button>
+      <button class="stab" onclick="switchStab('batter',1)">B. 스윙 분석</button>
+      <button class="stab" onclick="switchStab('batter',2)">C. 세부 스탯</button>
+      <button class="stab" onclick="switchStab('batter',3)">D. 타격 로그</button>
+      <button class="stab" onclick="switchStab('batter',4)">E. 존 분석</button>
+      <button class="stab" onclick="switchStab('batter',5)">F. 경기별 성적</button>
+      <button class="stab" onclick="switchStab('batter',6)">G. 🆚 상대전적</button>
+    </div>
+    <!-- A -->
+    <div class="spanel active" id="bs-0">
+      <div class="filter-row">
+        <span class="filter-label">투수 유형</span>
+        <select id="b-hand-A" onchange="renderBatterSubTab(0)">
+          <option value="">전체</option>
+          <option value="R">우투 상대</option>
+          <option value="L">좌투 상대</option>
+        </select>
+        <span class="filter-label">구종그룹</span>
+        <select id="ba-group-sel" onchange="renderBatterSpray()"><option value="">전체</option></select>
+        <span class="filter-label">구속범위</span>
+        <input type="range" id="ba-spd-min" min="80" max="180" value="80" style="width:100px" oninput="document.getElementById('ba-spd-min-v').textContent=this.value;renderBatterSpray()">
+        <span id="ba-spd-min-v" style="font-size:11px;font-family:var(--mono);color:var(--amber)">80</span>
+        <span style="font-size:11px;color:var(--muted)">~</span>
+        <input type="range" id="ba-spd-max" min="80" max="180" value="180" style="width:100px" oninput="document.getElementById('ba-spd-max-v').textContent=this.value;renderBatterSpray()">
+        <span id="ba-spd-max-v" style="font-size:11px;font-family:var(--mono);color:var(--amber)">180</span>
+        <span style="font-size:11px;color:var(--muted)">km/h</span>
+      </div>
+      <div class="grid2 section">
+        <div class="card"><div class="card-title" style="display:flex;align-items:center;justify-content:space-between;gap:8px;flex-wrap:wrap">
+          <span>타구 스프레이 차트</span>
+          <div style="display:flex;gap:4px;font-size:10px">
+            <button class="spray-zone-btn" data-mode="off" onclick="setSprayZone('off')" style="padding:4px 8px;background:rgba(57,255,138,0.15);border:1px solid #39ff8a;color:#39ff8a;border-radius:4px;cursor:pointer">끄기</button>
+            <button class="spray-zone-btn" data-mode="all" onclick="setSprayZone('all')" style="padding:4px 8px;background:transparent;border:1px solid var(--muted);color:var(--muted);border-radius:4px;cursor:pointer">📊 전체</button>
+            <button class="spray-zone-btn" data-mode="infield" onclick="setSprayZone('infield')" style="padding:4px 8px;background:transparent;border:1px solid var(--muted);color:var(--muted);border-radius:4px;cursor:pointer">🟫 내야</button>
+            <button class="spray-zone-btn" data-mode="outfield" onclick="setSprayZone('outfield')" style="padding:4px 8px;background:transparent;border:1px solid var(--muted);color:var(--muted);border-radius:4px;cursor:pointer">🟩 외야</button>
+          </div>
+        </div><div id="b-spray"></div></div>
+        <div class="card"><div class="card-title">발사각 × 타구속도 (배럴존)</div><div id="b-barrel"></div></div>
+      </div>
+      <div class="grid2 section">
+        <div class="card"><div class="card-title">타구 품질 분류 <span style="font-size:10px;color:var(--muted)">(V11.2 · WBD 실측 보정 · 반원=LA, 반지름=EV)</span></div><div id="b-bbquality"></div></div>
+        <div class="card"><div class="card-title">타구 품질 분포 <span style="font-size:10px;color:var(--muted)">(vs 리그 평균)</span></div><div id="b-bbquality-bars"></div></div>
+      </div>
+      <div class="grid2 section">
+        <div class="card"><div class="card-title">발사각 분포</div><div id="b-ldeg-hist"></div></div>
+        <div class="card"><div class="card-title">방향각 분포 (sdeg)</div><div id="b-sdeg-fan"></div></div>
+      </div>
+    </div>
+    <!-- B -->
+    <div class="spanel" id="bs-1">
+      <div class="filter-row" style="margin-bottom:12px">
+        <span class="filter-label">투수 유형</span>
+        <select id="b-hand-B" onchange="renderBatterSubTab(1)">
+          <option value="">전체</option>
+          <option value="R">우투 상대</option>
+          <option value="L">좌투 상대</option>
+        </select>
+      </div>
+      <div class="grid2 section">
+        <div class="card"><div class="card-title">스윙 지표 레이더</div><div id="b-radar"></div></div>
+        <div class="card"><div class="card-title">배트 컨택 위치 (hPos)</div><div id="b-hpos"></div></div>
+      </div>
+      <div class="card section"><div class="card-title">구속대별 타격 결과</div><div id="b-spd-band"></div></div>
+      <div class="card section">
+        <div class="card-title">🎯 상황별 대응 분석 (다중 필터)</div>
+        <div class="filter-row" style="margin-bottom:6px;flex-wrap:wrap;gap:6px">
+          <span class="filter-label">구속</span>
+          <span id="bf-spd-min-combo"></span>
+          <span style="color:var(--muted)">~</span>
+          <span id="bf-spd-max-combo"></span>
+          <span style="font-size:10px;color:var(--muted)">km/h</span>
+          <span class="filter-label" style="margin-left:6px">코스</span>
+          <select id="bf-zone" onchange="renderBatterFilterAnalysis()">
+            <option value="">전체</option>
+            <option value="in">몸쪽</option>
+            <option value="mid-h">중앙(좌우)</option>
+            <option value="out">바깥</option>
+            <option value="hi">상단</option>
+            <option value="mid-v">중단</option>
+            <option value="lo">하단</option>
+            <option value="inzone">존 안</option>
+            <option value="outzone">존 밖</option>
+          </select>
+          <span class="filter-label" style="margin-left:6px">카운트</span>
+          <select id="bf-count" onchange="renderBatterFilterAnalysis()">
+            <option value="">전체</option>
+            <option value="first">초구</option>
+            <option value="ahead">유리(볼>스트)</option>
+            <option value="even">동일</option>
+            <option value="behind">불리(스트>볼)</option>
+            <option value="2strike">2스트라이크</option>
+          </select>
+        </div>
+        <div class="filter-row" style="margin-bottom:8px">
+          <span class="filter-label">묶어보기</span>
+          <select id="bf-splitby" onchange="renderBatterFilterAnalysis()">
+            <option value="pitch">구종별</option>
+            <option value="spd5">구속 5km 단위</option>
+            <option value="spd10">구속 10km 단위</option>
+            <option value="zone9">코스 9분할</option>
+            <option value="count">카운트별</option>
+          </select>
+          <span id="bf-total" style="font-size:11px;color:var(--muted);margin-left:8px"></span>
+        </div>
+        <div class="tbl-wrap"><table class="data-table" id="b-filter-analysis"></table></div>
+      </div>
+      <div class="card section">
+        <div class="card-title">구종별 대응 성적</div>
+        <div class="tbl-wrap"><table class="data-table" id="b-pitch-table"></table></div>
+      </div>
+      <div class="card section"><div class="card-title">타격 반응 시간 분포 (hSec - pSec)</div><div id="b-timing"></div></div>
+    </div>
+    <!-- C -->
+    <div class="spanel" id="bs-2">
+      <div class="filter-row" style="margin-bottom:12px">
+        <span class="filter-label">투수 유형</span>
+        <select id="b-hand-C" onchange="renderBatterSubTab(2)">
+          <option value="">전체</option>
+          <option value="R">우투 상대</option>
+          <option value="L">좌투 상대</option>
+        </select>
+      </div>
+      <div id="b-rv-card"></div>
+      <div id="b-xout-card"></div>
+      <div id="b-pctl-card"></div>
+      <div class="grid2 section">
+        <div class="card">
+          <div class="card-title">카운트별 성적</div>
+          <div class="tbl-wrap"><table class="data-table" id="b-count-table"></table></div>
+        </div>
+        <div class="card">
+          <div class="card-title">주자 상황별 성적</div>
+          <div class="tbl-wrap"><table class="data-table" id="b-runner-table"></table></div>
+        </div>
+      </div>
+      <div class="grid2 section">
+        <div class="card"><div class="card-title">키별 타격 성적</div><div id="b-height-stats"></div></div>
+        <div class="card"><div class="card-title">결과 분포</div><div id="b-result-pie"></div></div>
+      </div>
+      <div class="card section">
+        <div class="card-title">타자 비교 레이더</div>
+        <div class="filter-row">
+          <span class="filter-label">타자 1</span><select id="compare-bat1"></select>
+          <span class="filter-label">vs 타자 2</span><select id="compare-bat2"></select>
+          <button class="btn-secondary" onclick="renderCompareRadar()">비교</button>
+        </div>
+        <div id="b-compare-radar"></div>
+      </div>
+    </div>
+    <!-- D -->
+    <div class="spanel" id="bs-3">
+      <div class="filter-row">
+        <select id="bl-inn-sel" onchange="renderBatterLog()"><option value="">전체 이닝</option></select>
+        <select id="bl-group-sel" onchange="renderBatterLog()"><option value="">전체 구종</option></select>
+        <select id="bl-result-sel" onchange="renderBatterLog()"><option value="">전체 결과</option></select>
+        <select id="bl-call-sel" onchange="renderBatterLog()" title="실제 결과 기준"><option value="">전체 결과</option><option value="hr">🏠 홈런</option><option value="hit">🟢 안타</option><option value="out">⚪ 아웃</option><option value="whiff">❌ 헛스윙</option><option value="called">👀 루킹S</option><option value="foul">🟣 파울</option><option value="ball">🔵 볼</option><option value="hbp">✖ 사구</option></select>
+        <select id="bl-zone-sel" onchange="renderBatterLog()"><option value="">전체 존</option><option value="in">존 안</option><option value="out">존 밖</option></select>
+      </div>
+      <div class="tbl-wrap"><table class="data-table" id="batter-log-table"></table></div>
+      <div class="pag" id="batter-log-pag"></div>
+    </div>
+    <!-- E. 존 분석 -->
+    <div class="spanel" id="bs-4">
+      <div class="filter-row" style="margin-bottom:12px">
+        <span class="filter-label">투수 유형</span>
+        <select id="b-hand-E" onchange="renderBatterSubTab(4)">
+          <option value="">전체</option>
+          <option value="R">우투 상대</option>
+          <option value="L">좌투 상대</option>
+        </select>
+      </div>
+      <div class="card section">
+        <div class="card-title">존 영역별 종합 지표</div>
+        <div id="b-zone-summary"></div>
+      </div>
+      <div class="grid2 section">
+        <div class="card">
+          <div class="card-title">5×5 핫/콜드 존 (가운데 3×3 = 인존)</div>
+          <div class="filter-row" style="margin-bottom:10px;flex-wrap:wrap">
+            <span class="filter-label">지표</span>
+            <select id="b-zone-metric" onchange="renderBatterZoneMap()">
+              <option value="avg">타율(AVG)</option>
+              <option value="slg">장타율(SLG)</option>
+              <option value="ev">평균 EV</option>
+              <option value="whiff">헛스윙률</option>
+              <option value="la">평균 LA</option>
+              <option value="hh">HH% (110+)</option>
+              <option value="hhp">HH+% (125+)</option>
+              <option value="brl">배럴%</option>
+              <option value="brlp">배럴+%</option>
+              <option value="ops">OPS</option>
+            </select>
+          </div>
+          <div class="filter-row" style="margin-bottom:10px;flex-wrap:wrap">
+            <span class="filter-label">구종 필터</span>
+            <div id="b-map-pitch-toggles" style="display:flex;gap:6px;flex-wrap:wrap"></div>
+            <button class="btn-secondary" onclick="toggleMapPitches('b','all')" style="font-size:11px;padding:4px 10px">전체</button>
+            <button class="btn-secondary" onclick="toggleMapPitches('b','none')" style="font-size:11px;padding:4px 10px">해제</button>
+          </div>
+          <div class="filter-row" style="margin-bottom:10px;flex-wrap:wrap">
+            <span class="filter-label">구속</span>
+            <span id="b-zone-spd-min-combo"></span>
+            <span style="color:var(--muted)">~</span>
+            <span id="b-zone-spd-max-combo"></span>
+            <span style="font-size:10px;color:var(--muted)">km/h</span>
+          </div>
+          <div id="b-zone-map"></div>
+        </div>
+        <div class="card">
+          <div class="card-title">구종 × 존 상세 성적</div>
+          <div class="filter-row" style="margin-bottom:10px">
+            <span class="filter-label">구종</span>
+            <select id="b-zone-pitch-filter" onchange="renderBatterZonePitchTable()"><option value="">전체</option></select>
+          </div>
+          <div class="tbl-wrap"><table class="data-table" id="b-zone-pitch-table"></table></div>
+        </div>
+      </div>
+      <div class="card section">
+        <div class="card-title">카운트별 성적 (유리/평가/불리)</div>
+        <div id="b-count-category"></div>
+      </div>
+    </div>
+    <!-- F. 경기별 성적 -->
+    <div class="spanel" id="bs-5">
+      <div class="card section">
+        <div class="card-title">📅 경기별 성적</div>
+        <div id="b-game-by-game"></div>
+      </div>
+    </div>
+    <!-- G. 상대전적 -->
+    <div class="spanel" id="bs-6">
+      <div id="b-h2h"></div>
+    </div>
+  </div>

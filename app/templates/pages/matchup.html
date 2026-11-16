@@ -1,0 +1,15 @@
+<div class="page active" id="page-matchup">
+  <div class="filter-row" style="margin-bottom:16px;flex-wrap:wrap">
+    <span class="filter-label">⚾ 투수</span>
+    <select id="mu-pitcher" onchange="renderMatchupPage()"></select>
+    <span class="filter-label">🏏 타자</span>
+    <select id="mu-batter" onchange="renderMatchupPage()"></select>
+    <span class="filter-label">시뮬</span>
+    <select id="mu-sims" onchange="renderMatchupPage()">
+      <option value="100">100회</option>
+      <option value="500" selected>500회</option>
+      <option value="1000">1000회</option>
+    </select>
+  </div>
+  <div id="matchup-content"></div>
+</div>

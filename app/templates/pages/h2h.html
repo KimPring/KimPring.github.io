@@ -1,0 +1,28 @@
+<div class="page active" id="page-h2h">
+  <div class="filter-row" style="margin-bottom:14px;flex-wrap:wrap;gap:8px">
+    <span class="filter-label">기준</span>
+    <div class="stab-row" style="display:inline-flex;gap:4px">
+      <button class="h2h-mode-btn active" data-mode="batter" onclick="setH2HMode('batter')">🏏 타자 기준</button>
+      <button class="h2h-mode-btn" data-mode="pitcher" onclick="setH2HMode('pitcher')">⚾ 투수 기준</button>
+      <button class="h2h-mode-btn" data-mode="duo" onclick="setH2HMode('duo')">🔍 1:1 상세</button>
+    </div>
+    <span class="filter-label" id="h2h-sel-label">🏏 타자</span>
+    <select id="h2h-player" onchange="renderH2HPage()"></select>
+    <span class="filter-label" id="h2h-sel2-label" style="display:none">⚾ 투수</span>
+    <select id="h2h-player2" onchange="renderH2HPage()" style="display:none"></select>
+    <span class="filter-label h2h-list-only">최소 타석</span>
+    <select id="h2h-minpa" class="h2h-list-only" onchange="renderH2HPage()">
+      <option value="1">1+</option>
+      <option value="3" selected>3+</option>
+      <option value="5">5+</option>
+      <option value="10">10+</option>
+    </select>
+    <span class="filter-label h2h-list-only">손잡이</span>
+    <select id="h2h-hand" class="h2h-list-only" onchange="renderH2HPage()">
+      <option value="">전체</option>
+      <option value="R">우</option>
+      <option value="L">좌</option>
+    </select>
+  </div>
+  <div id="h2h-content"></div>
+</div>

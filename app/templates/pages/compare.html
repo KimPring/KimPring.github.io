@@ -1,0 +1,15 @@
+<div class="page active" id="page-compare">
+  <div class="filter-row" style="margin-bottom:16px;flex-wrap:wrap">
+    <span class="filter-label">타입</span>
+    <select id="cmp-type" onchange="renderComparePage()">
+      <option value="pitcher">⚾ 투수</option>
+      <option value="batter">🏏 타자</option>
+    </select>
+    <span class="filter-label">선수 1</span>
+    <select id="cmp-p1" onchange="renderComparePage()"></select>
+    <span class="filter-label">선수 2</span>
+    <select id="cmp-p2" onchange="renderComparePage()"></select>
+    <button class="btn-secondary" onclick="swapComparePlayers()" style="font-size:11px;padding:6px 12px">⇄ 바꾸기</button>
+  </div>
+  <div id="compare-content"></div>
+</div>

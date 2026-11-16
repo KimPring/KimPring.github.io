@@ -1,0 +1,113 @@
+<div class="page active" id="page-leaderboard">
+  <div class="filter-row" style="margin-bottom:20px">
+    <span class="filter-label">카테고리</span>
+    <select id="lb-category" onchange="renderLeaderboard()">
+      <optgroup label="📊 WAR (sabermetrics)">
+        <option value="war-pitcher">⚾ 투수 WAR</option>
+        <option value="war-batter">🏏 타자 WAR</option>
+        <option value="war-total">🏆 통합 WAR (투타 합산)</option>
+      </optgroup>
+      <optgroup label="⚾ 투수 - 결과 지표">
+        <option value="p-ovr">⭐ 투수 OVR</option>
+        <option value="p-era">🛡️ ERA (방어율, 낮은순)</option>
+        <option value="p-eraplus">🏅 ERA+ (리그평균 대비, 높은순)</option>
+        <option value="p-whip">🔒 WHIP (낮은순)</option>
+        <option value="p-ip">⏱️ 이닝 (IP, 많은순)</option>
+        <option value="p-runs">🔥 실점 (적은순)</option>
+        <option value="p-ra9">📉 RA9 (9이닝당 실점, 낮은순)</option>
+        <option value="p-ba">🎯 피안타율 (낮은순)</option>
+        <option value="p-hr">💪 피홈런 (적은순)</option>
+        <option value="p-hrrate">💣 피홈런% (낮은순)</option>
+        <option value="p-k">🔥 K%</option>
+        <option value="p-bb">✨ BB% (낮은순)</option>
+        <option value="p-kbb">⚔️ K/BB 비율</option>
+      </optgroup>
+      <optgroup label="⚾ 투수 - 구위/타구질">
+        <option value="p-spd">⚡ 평균 직구 구속</option>
+        <option value="p-pow">💪 평균 원본 구력 (pPow)</option>
+        <option value="p-maxpow">🚀 최고 원본 구력 (pPow)</option>
+        <option value="p-uncapped">🌟 무제한 직구 (캡 풀렸을 때, km/h)</option>
+        <option value="p-uncappedmax">⚡ 무제한 최고구속 (km/h)</option>
+        <option value="p-whiff">💫 헛스윙% (높은순)</option>
+        <option value="p-gidp">🔻 병살 유도 (많은순)</option>
+        <option value="p-ev">🛡️ 평균 피EV (낮은순)</option>
+        <option value="p-hh">🛑 피하드히트% (낮은순)</option>
+        <option value="p-hhp">🛑 피HH+% (≥125, 낮은순)</option>
+        <option value="p-brlp">🛑 피배럴+% (≥125&LA20~40, 낮은순)</option>
+        <option value="p-barrel">🧱 피배럴% (낮은순)</option>
+        <option value="p-zwhiff">🎯 존내 헛스윙% (높은순)</option>
+        <option value="p-ozwhiff">👀 존밖 헛스윙% (높은순)</option>
+      </optgroup>
+      <optgroup label="⚾ 투수 - 제구/효율">
+        <option value="p-mistake">🎯 실투율 (낮은순)</option>
+        <option value="p-border">✨ 보더라인% (높은순)</option>
+        <option value="p-safe">📐 안전존% (높은순)</option>
+        <option value="p-strike">🎯 스트라이크%</option>
+        <option value="p-fps">🔵 초구 스트라이크%</option>
+        <option value="p-ppa">⏱️ 이닝당 투구수 (낮은순, 효율)</option>
+        <option value="p-chase">👀 체이스 유도% (높은순)</option>
+        <option value="p-var">🎭 구종 다양성</option>
+      </optgroup>
+      <optgroup label="🏏 타자 - 결과 지표">
+        <option value="b-ovr" selected>⭐ 타자 OVR</option>
+        <option value="b-avg">🏏 타율</option>
+        <option value="b-slg">💥 장타율</option>
+        <option value="b-ops">⚡ OPS</option>
+        <option value="b-obp">🚶 출루율</option>
+        <option value="b-iso">🎪 ISO (순수 장타력)</option>
+        <option value="b-hr">⚾ 홈런</option>
+        <option value="b-gidp">🔻 병살타 (적은순)</option>
+        <option value="b-hrrate">🚀 홈런% (타구당)</option>
+        <option value="b-hits">📊 안타수</option>
+      </optgroup>
+      <optgroup label="🏏 타자 - 타구질">
+        <option value="b-ev">🚀 평균 EV</option>
+        <option value="b-hh">💪 하드히트% (≥110)</option>
+        <option value="b-hhp">🔥 HH+% (≥125)</option>
+        <option value="b-brl">🎯 배럴%</option>
+        <option value="b-brlp">🎯 배럴+% (≥125&LA20~40)</option>
+        <option value="b-ld">➡️ 라인드라이브%</option>
+        <option value="b-sweet">🎪 스윗스팟%</option>
+        <option value="b-dist">📏 평균 비거리</option>
+        <option value="b-maxdist">💥 최장 비거리</option>
+      </optgroup>
+      <optgroup label="🏏 타자 - 스윙/선구">
+        <option value="b-whiff">🎯 헛스윙% 전체 (낮은순)</option>
+        <option value="b-whiff-in">🎯 헛스윙% 존 안 (낮은순)</option>
+        <option value="b-whiff-out">🎯 헛스윙% 존 밖 (낮은순)</option>
+        <option value="b-contact">✅ 컨택률 전체 (높은순)</option>
+        <option value="b-contact-in">✅ 컨택률 존 안 (높은순)</option>
+        <option value="b-contact-out">✅ 컨택률 존 밖 (높은순)</option>
+        <option value="b-chase">👁️ 체이스% 존 밖 스윙 (낮은순)</option>
+        <option value="b-swing">🔥 스윙% 전체</option>
+        <option value="b-swing-in">🔥 스윙% 존 안 (공격성)</option>
+        <option value="b-bb">✨ BB%</option>
+        <option value="b-ppa">🕰️ 타석당 투구수 (끈질김)</option>
+        <option value="b-fpsw">💥 초구 스윙%</option>
+      </optgroup>
+      <optgroup label="🎋 타자 - 번트 (재미요소)">
+        <option value="b-bunt">🎋 번트 시도 수</option>
+        <option value="b-bunthit">✅ 번트 안타 수</option>
+        <option value="b-buntrate">🎯 번트 성공률 (3회+)</option>
+      </optgroup>
+    </select>
+    <span class="filter-label">최소 기준</span>
+    <select id="lb-min-filter" onchange="renderLeaderboard()">
+      <option value="0">전체</option>
+      <option value="low">낮음</option>
+      <option value="med" selected>보통</option>
+      <option value="high">엄격</option>
+      <option value="strict">매우 엄격</option>
+      <option value="extreme">매우매우 엄격</option>
+      <option value="custom">⚙️ 직접 입력</option>
+    </select>
+    <input type="number" id="lb-custom-batter" min="0" placeholder="타자 최소 타구" title="타자 최소 타구수 (직접 모드용)" value="15" onchange="window.lbCustomMinB=Math.max(0,+this.value||0);renderLeaderboard()" style="width:80px;padding:6px;background:var(--card2);border:1px solid var(--border);color:var(--text);font-family:var(--mono);font-size:11px">
+    <input type="number" id="lb-custom-pitcher" min="0" placeholder="투수 최소 투구" title="투수 최소 투구수 (직접 모드용)" value="25" onchange="window.lbCustomMinP=Math.max(0,+this.value||0);renderLeaderboard()" style="width:80px;padding:6px;background:var(--card2);border:1px solid var(--border);color:var(--text);font-family:var(--mono);font-size:11px">
+    <span class="filter-label">순위</span>
+    <select id="lb-direction" onchange="renderLeaderboard()">
+      <option value="best" selected>🏆 잘하는 순</option>
+      <option value="worst">💩 못하는 순</option>
+    </select>
+  </div>
+  <div id="leaderboard-content"></div>
+</div>

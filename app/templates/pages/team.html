@@ -1,0 +1,35 @@
+<div class="page active" id="page-team">
+  <div class="filter-row" style="margin-bottom:12px;flex-wrap:wrap">
+    <span class="filter-label">분석 모드</span>
+    <select id="team-mode" onchange="renderTeamPage()" style="background:var(--card2);border:1px solid var(--border);color:var(--text);padding:6px 12px;border-radius:4px;font-size:12px">
+      <option value="team">🏟️ 팀 분석</option>
+      <option value="group">👥 그룹 분석</option>
+    </select>
+    <span class="filter-label" id="team-sel-label">팀 선택</span>
+    <select id="team-sel" onchange="_onTeamSelChange()"></select>
+    <button class="btn-secondary" onclick="openTeamAliasManager()" style="font-size:11px;padding:6px 12px">🔗 팀명 병합</button>
+    <button id="team-edit-toggle" onclick="toggleCardEditMode()" title="편집 모드 (✏️ 버튼 표시/숨김)" style="font-size:11px;padding:6px 10px;background:var(--card2);border:1px solid var(--border);color:var(--muted);border-radius:4px;cursor:pointer">✏️ 편집 OFF</button>
+    <button class="btn-secondary" onclick="openTeamGroupEditor()" style="font-size:11px;padding:6px 12px;background:#2196f3;color:#fff;border-color:#2196f3">👥 팀/그룹 편집</button>
+  </div>
+  
+  <!-- 팀 분석 서브탭 -->
+  <div id="team-subtabs" style="display:flex;gap:0;margin-bottom:12px;border-bottom:1px solid var(--border);flex-wrap:wrap">
+    <button id="team-subtab-overview" onclick="switchTeamSubtab('overview')" style="background:transparent;border:none;border-bottom:2px solid var(--amber);color:var(--amber);padding:9px 16px;font-size:13px;font-weight:700;cursor:pointer">📊 개요</button>
+    <button id="team-subtab-report" onclick="switchTeamSubtab('report')" style="background:transparent;border:none;border-bottom:2px solid transparent;color:var(--muted);padding:9px 16px;font-size:13px;font-weight:700;cursor:pointer">📜 전력 진단서</button>
+    <button id="team-subtab-bat" onclick="switchTeamSubtab('bat')" style="background:transparent;border:none;border-bottom:2px solid transparent;color:var(--muted);padding:9px 16px;font-size:13px;font-weight:700;cursor:pointer">🏏 타격</button>
+    <button id="team-subtab-pit" onclick="switchTeamSubtab('pit')" style="background:transparent;border:none;border-bottom:2px solid transparent;color:var(--muted);padding:9px 16px;font-size:13px;font-weight:700;cursor:pointer">⚾ 투수</button>
+    <button id="team-subtab-def" onclick="switchTeamSubtab('def')" style="background:transparent;border:none;border-bottom:2px solid transparent;color:var(--muted);padding:9px 16px;font-size:13px;font-weight:700;cursor:pointer">🛡️ 수비</button>
+    <button id="team-subtab-trend" onclick="switchTeamSubtab('trend')" style="background:transparent;border:none;border-bottom:2px solid transparent;color:var(--muted);padding:9px 16px;font-size:13px;font-weight:700;cursor:pointer">📈 추이·전적</button>
+    <button id="team-subtab-stats" onclick="switchTeamSubtab('stats')" style="background:transparent;border:none;border-bottom:2px solid transparent;color:var(--muted);padding:9px 16px;font-size:13px;font-weight:700;cursor:pointer">📋 로스터</button>
+    <button id="team-subtab-scout" onclick="switchTeamSubtab('scout')" style="background:transparent;border:none;border-bottom:2px solid transparent;color:var(--muted);padding:9px 16px;font-size:12px;font-weight:700;cursor:pointer;opacity:0.7">🏆 전력 진단서 (구)</button>
+  </div>
+  
+  <div id="team-overview-content"></div>
+  <div id="team-report-content" style="display:none"></div>
+  <div id="team-bat-content" style="display:none"></div>
+  <div id="team-pit-content" style="display:none"></div>
+  <div id="team-def-content" style="display:none"></div>
+  <div id="team-trend-content" style="display:none"></div>
+  <div id="team-content" style="display:none"></div>
+  <div id="team-scout-content" style="display:none"></div>
+</div>

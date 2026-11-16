@@ -1,0 +1,25 @@
+<div class="page active" id="page-highlights">
+  <div class="filter-row" style="margin-bottom:16px;flex-wrap:wrap">
+    <span class="filter-label">카테고리</span>
+    <select id="hl-category" onchange="renderHighlightsPage()">
+      <option value="hr">⚾ 홈런</option>
+      <option value="barrel">🎯 배럴 타구 (EV≥105, 발사각 8~32°)</option>
+      <option value="hardhit">💪 강타 (EV≥115)</option>
+      <option value="k">🔥 헛스윙 삼진</option>
+      <option value="walk">✨ 볼넷</option>
+      <option value="fast">💪 최고 원본 구력 (pPow) Top</option>
+    </select>
+    <span class="filter-label">정렬</span>
+    <select id="hl-sort" onchange="renderHighlightsPage()">
+      <option value="top">상위 기록순</option>
+      <option value="recent">최신순</option>
+    </select>
+    <span class="filter-label">표시</span>
+    <select id="hl-limit" onchange="renderHighlightsPage()">
+      <option value="25">25개</option>
+      <option value="50" selected>50개</option>
+      <option value="100">100개</option>
+    </select>
+  </div>
+  <div id="highlights-content"></div>
+</div>

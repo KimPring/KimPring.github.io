@@ -1,0 +1,9 @@
+<div class="page active" id="page-league">
+  <div class="filter-row" style="margin-bottom:14px;flex-wrap:wrap;align-items:center;gap:10px">
+    <span style="font-size:18px;font-weight:700;color:var(--amber)">🏆 리그전</span>
+    <span style="font-size:11px;color:var(--muted)">정규시즌 공식 기록</span>
+    <select id="league-season-sel" onchange="renderLeaguePage()" style="margin-left:auto;font-size:12px;padding:5px 10px;background:var(--bg2);color:var(--text);border:1px solid var(--border);border-radius:6px"></select>
+    <select id="league-phase-sel" onchange="renderLeaguePage()" style="font-size:12px;padding:5px 10px;background:var(--bg2);color:var(--text);border:1px solid var(--border);border-radius:6px"></select>
+  </div>
+  <div id="league-content"></div>
+</div>

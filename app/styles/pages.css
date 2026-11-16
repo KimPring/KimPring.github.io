@@ -1,0 +1,12 @@
+/* Shared navigation is authored once; only the selected page is in each document. */
+a.nav-btn,a.mobile-menu-btn,a.mbt-btn,a.hub-tab {text-decoration:none;display:inline-flex;align-items:center;justify-content:center}
+.nav-dropdown-menu a {display:block;text-decoration:none;color:var(--text);padding:10px 14px;font-size:12px}
+.nav-dropdown-menu a:hover {background:var(--card2);color:var(--amber)}
+#boot-status {position:fixed;bottom:16px;left:50%;transform:translateX(-50%);z-index:99999;max-width:90vw;padding:12px 18px;border:1px solid var(--border);border-radius:8px;background:var(--card);color:var(--text);font-size:13px;box-shadow:0 4px 24px #0005}
+#boot-status[hidden] {display:none}
+#boot-status[data-error] {border-color:var(--red);white-space:pre-wrap}
+body[data-booting] #upload-page,body[data-booting] #app {visibility:hidden}
+body[data-navigating] {cursor:progress}
+.page-empty {padding:40px 20px;text-align:center;color:var(--muted)}
+.page-empty a {color:var(--amber)}
+.page[data-empty] > :not(#empty-scope) {display:none !important}

@@ -1,0 +1,188 @@
+<div class="page active" id="page-pitcher">
+    <div class="filter-row">
+      <span class="filter-label">경기</span>
+      <select id="pitcher-game-sel" onchange="onPitcherGameFilter()"><option value="">전체 경기</option></select>
+      <span class="filter-label">투수</span>
+      <select id="pitcher-sel" onchange="onPitcherChange()"></select>
+    </div>
+    <div id="pitcher-header"></div>
+    <div class="subtab-bar">
+      <button class="stab active" onclick="switchStab('pitcher',0)">A. 구종 프로파일</button>
+      <button class="stab" onclick="switchStab('pitcher',1)">B. 제구 &amp; 존</button>
+      <button class="stab" onclick="switchStab('pitcher',2)">C. 투구 상황</button>
+      <button class="stab" onclick="switchStab('pitcher',3)">D. 투구 로그</button>
+      <button class="stab" onclick="switchStab('pitcher',4)">E. 제구 정밀도</button>
+      <button class="stab" onclick="switchStab('pitcher',5)">F. 경기별 성적</button>
+      <button class="stab" onclick="switchStab('pitcher',6)">G. 🌟 잠재 구속</button>
+      <button class="stab" onclick="switchStab('pitcher',7)">H. 🆚 상대전적</button>
+    </div>
+    <!-- A -->
+    <div class="spanel active" id="ps-0">
+      <div class="filter-row" style="margin-bottom:12px">
+        <span class="filter-label">타자 유형</span>
+        <select id="p-hand-A" onchange="renderPitcherPage()">
+          <option value="">전체</option>
+          <option value="R">우타 상대</option>
+          <option value="L">좌타 상대</option>
+        </select>
+      </div>
+      <div class="grid2 section">
+        <div class="card"><div class="card-title">구종 분포</div><div id="p-donut"></div></div>
+        <div class="card"><div class="card-title">구속 분포 히스토그램</div><div id="p-speed-hist"></div></div>
+      </div>
+      <div class="card section">
+        <div class="card-title">구종 그룹별 핵심 지표</div>
+        <div class="tbl-wrap" id="gtable-wrap"><table class="data-table gtable compact" id="p-group-table" style="white-space:nowrap;min-width:1300px"></table></div>
+      </div>
+      <div class="card section"><div class="card-title">구종별 스핀 맵 (sH × sV)</div><div id="p-spin-map"></div></div>
+      <div class="grid2 section">
+        <div class="card"><div class="card-title">피타구 품질 분류 <span style="font-size:10px;color:var(--muted)">(V11.2 · 허용 타구 · 반원=LA, 반지름=EV)</span></div><div id="p-bbquality"></div></div>
+        <div class="card"><div class="card-title">피타구 품질 분포 <span style="font-size:10px;color:var(--muted)">(vs 리그 평균 · 낮을수록 좋은 존: 배럴+/솔리드/플레어)</span></div><div id="p-bbquality-bars"></div></div>
+      </div>
+    </div>
+    <!-- B -->
+    <div class="spanel" id="ps-1">
+      <div class="filter-row" style="flex-wrap:wrap">
+        <span class="filter-label">구종 필터</span>
+        <div id="pz-pitch-multi" style="display:flex;gap:6px;flex-wrap:wrap;align-items:center"></div>
+        <button class="btn-secondary" onclick="pzPitchAll()" style="font-size:11px;padding:4px 10px">전체 선택</button>
+        <button class="btn-secondary" onclick="pzPitchNone()" style="font-size:11px;padding:4px 10px">전체 해제</button>
+      </div>
+      <div class="filter-row" style="flex-wrap:wrap">
+        <span class="filter-label">구종그룹</span>
+        <select id="pz-group-sel" onchange="renderPitcherZone()"><option value="">전체</option></select>
+        <span class="filter-label">결과</span>
+        <select id="pz-call-sel" onchange="renderPitcherZone()" title="실제 투구 결과 기준 (판정코드 아님)"><option value="">전체</option><option value="hr">🏠 홈런</option><option value="hit">🟢 안타</option><option value="out">⚪ 아웃(인플레이)</option><option value="contact">💥 컨택 전체</option><option value="whiff">❌ 헛스윙</option><option value="called">👀 루킹 스트라이크</option><option value="foul">🟣 파울</option><option value="ball">🔵 볼</option><option value="hbp">✖ 사구</option></select>
+        <span class="filter-label">색상</span>
+        <select id="pz-color-sel" onchange="renderPitcherZone()"><option value="group">구종별</option><option value="outcome">결과별</option></select>
+        <span class="filter-label">타석</span>
+        <select id="pz-bzone-sel" onchange="renderPitcherZone()"><option value="">전체</option><option value="R">우타</option><option value="L">좌타</option></select>
+      </div>
+      <div class="grid3 section" style="grid-template-columns:1fr 1fr 1fr">
+        <div class="card"><div class="card-title">스트라이크존 투구 분포</div><div id="p-zone-chart"></div><div id="p-zone-detail" style="margin-top:8px;font-size:10px;font-family:var(--mono);color:var(--muted)"></div></div>
+        <div class="card"><div class="card-title">⚠ 피안타 / 하드힛</div><div id="p-zone9-bad"></div></div>
+        <div class="card"><div class="card-title">✅ 삼진 / 약한타구</div><div id="p-zone9-good"></div></div>
+      </div>
+      <div class="card section">
+        <div class="card-title">카운트별 투구 전략</div>
+        <div id="p-count-grid"></div>
+        <div id="p-count-detail" style="margin-top:14px"></div>
+      </div>
+    </div>
+    <!-- C -->
+    <div class="spanel" id="ps-2">
+      <div class="filter-row" style="margin-bottom:12px">
+        <span class="filter-label">타자 유형</span>
+        <select id="p-hand-C" onchange="renderPitcherSubTab(2)">
+          <option value="">전체</option>
+          <option value="R">우타 상대</option>
+          <option value="L">좌타 상대</option>
+        </select>
+      </div>
+      <div id="p-rv-card"></div>
+      <div id="p-xout-card"></div>
+      <div id="p-pctl-card"></div>
+      <div class="card section"><div class="card-title">주자 상황별 구종 분포</div><div id="p-runner-donuts"></div></div>
+      <div class="card section"><div class="card-title">이닝별 평균 구속 변화</div><div id="p-inn-velocity"></div></div>
+      <div class="grid2 section">
+        <div class="card"><div class="card-title">vs 좌타 구종 분포</div><div id="p-lr-l"></div></div>
+        <div class="card"><div class="card-title">vs 우타 구종 분포</div><div id="p-lr-r"></div></div>
+      </div>
+      <div class="card section"><div class="card-title">결과별 주요 구종 Top3</div><div id="p-result-pitch"></div></div>
+    </div>
+    <!-- D -->
+    <div class="spanel" id="ps-3">
+      <div class="filter-row">
+        <select id="pl-inn-sel" onchange="renderPitcherLog()"><option value="">전체 이닝</option></select>
+        <select id="pl-group-sel" onchange="renderPitcherLog()"><option value="">전체 구종</option></select>
+        <select id="pl-call-sel" onchange="renderPitcherLog()" title="실제 결과 기준"><option value="">전체 결과</option><option value="hr">🏠 홈런</option><option value="hit">🟢 안타</option><option value="out">⚪ 아웃</option><option value="whiff">❌ 헛스윙</option><option value="called">👀 루킹S</option><option value="foul">🟣 파울</option><option value="ball">🔵 볼</option><option value="hbp">✖ 사구</option></select>
+        <select id="pl-result-sel" onchange="renderPitcherLog()"><option value="">전체 결과</option></select>
+      </div>
+      <div class="tbl-wrap"><table class="data-table" id="pitcher-log-table"></table></div>
+      <div class="pag" id="pitcher-log-pag"></div>
+    </div>
+    <!-- E. 제구 정밀도 -->
+    <div class="spanel" id="ps-4">
+      <div class="filter-row" style="margin-bottom:12px">
+        <span class="filter-label">타자 유형</span>
+        <select id="p-hand-E" onchange="renderPitcherSubTab(4)">
+          <option value="">전체</option>
+          <option value="R">우타 상대</option>
+          <option value="L">좌타 상대</option>
+        </select>
+      </div>
+      <div class="filter-row" style="margin-bottom:12px;flex-wrap:wrap">
+        <span class="filter-label">구종 필터</span>
+        <div id="p-precision-pitch-toggles" style="display:flex;gap:6px;flex-wrap:wrap"></div>
+        <button class="btn-secondary" onclick="togglePrecisionPitches('all')" style="font-size:11px;padding:4px 10px">전체 선택</button>
+        <button class="btn-secondary" onclick="togglePrecisionPitches('none')" style="font-size:11px;padding:4px 10px">전체 해제</button>
+      </div>
+      <div class="card section">
+        <div class="card-title">제구 영역 분류 (실투 탐지)</div>
+        <div id="p-precision-summary"></div>
+      </div>
+      <div class="card section">
+        <div class="card-title">구종별 실투율 / 보더라인 비교</div>
+        <div class="tbl-wrap"><table class="data-table" id="p-precision-pitch-table"></table></div>
+      </div>
+      <div class="grid2 section">
+        <div class="card">
+          <div class="card-title">5×5 투구 분포 / 피안타율 히트맵</div>
+          <div class="filter-row" style="margin-bottom:10px;flex-wrap:wrap">
+            <span class="filter-label">지표</span>
+            <select id="p-precision-metric" onchange="renderPitcherPrecisionMap()">
+              <option value="count">투구 빈도</option>
+              <option value="avg">피안타율</option>
+              <option value="whiff">헛스윙률</option>
+              <option value="ev">평균 EV</option>
+              <option value="la">평균 LA</option>
+              <option value="hh">HH% (110+)</option>
+              <option value="hhp">HH+% (125+)</option>
+              <option value="brl">배럴%</option>
+              <option value="brlp">배럴+%</option>
+            </select>
+          </div>
+          <div class="filter-row" style="margin-bottom:10px;flex-wrap:wrap">
+            <span class="filter-label">구종 필터</span>
+            <div id="p-map-pitch-toggles" style="display:flex;gap:6px;flex-wrap:wrap"></div>
+            <button class="btn-secondary" onclick="toggleMapPitches('p','all')" style="font-size:11px;padding:4px 10px">전체</button>
+            <button class="btn-secondary" onclick="toggleMapPitches('p','none')" style="font-size:11px;padding:4px 10px">해제</button>
+          </div>
+          <div id="p-precision-map"></div>
+        </div>
+        <div class="card">
+          <div class="card-title">카운트별 투구 전략</div>
+          <div id="p-count-strategy"></div>
+        </div>
+      </div>
+      <div class="card section">
+        <div class="card-title">2연속 구종 시퀀스 (Top 10)</div>
+        <div class="tbl-wrap"><table class="data-table" id="p-sequence-table"></table></div>
+      </div>
+      <div class="grid2 section">
+        <div class="card">
+          <div class="card-title">좌타 vs 우타 성적 비교</div>
+          <div class="tbl-wrap"><table class="data-table" id="p-lr-split-table"></table></div>
+        </div>
+        <div class="card">
+          <div class="card-title">투구수 구간별 피로도</div>
+          <div class="tbl-wrap"><table class="data-table" id="p-fatigue-table"></table></div>
+        </div>
+      </div>
+    </div>
+    <!-- F: 경기별 성적 -->
+    <div class="spanel" id="ps-5">
+      <div class="card section">
+        <div class="card-title">📅 경기별 성적</div>
+        <div id="p-game-by-game"></div>
+      </div>
+    </div>
+    <!-- G: 잠재 구속 -->
+    <div class="spanel" id="ps-6">
+      <div id="p-potential-velocity"></div>
+    </div>
+    <!-- H: 상대전적 -->
+    <div class="spanel" id="ps-7">
+      <div id="p-h2h"></div>
+    </div>
+  </div>
